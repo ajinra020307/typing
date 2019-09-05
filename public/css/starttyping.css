@@ -1,0 +1,98 @@
+ 
+        body{
+        	font-family: 'Source Sans Pro';
+        
+        	
+        }
+		.popup_content{
+			width: 70%;
+			margin: auto;
+			font-size: 20px;
+			background: linear-gradient(to bottom right,#116149,#13aa52);
+			color: white;
+			padding: 40px 40px;
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+			position: relative;
+		}
+		.popup_content div{
+			display: flex;
+			flex-direction: column;
+			
+		}
+		.accountpopup span{
+			cursor: pointer;
+			margin: 20px;
+		}
+		.popup_content img{
+			position: absolute;
+			top: 10px;
+			right: 10px;
+		}
+		.accountpopup{
+			position: absolute;
+			top: 20%;
+			bottom: 0;
+			width: 100%;
+			z-index: 200;
+			display: none;
+		}
+
+
+		.level{
+			display: flex;
+			flex-direction: column;
+			font-size: 20px;
+			align-items: flex-start;
+			
+		}
+
+		.content{
+			width: 90%;
+			margin: auto;
+			display:grid;
+			 grid-template-columns: 70% 30%;
+		}
+		.content_container{
+          display: grid;
+          grid-template-columns: repeat(3,1fr);
+          grid-template-rows: auto;
+          
+          
+		}
+		.content_container img:nth-child(1){
+			width: 250px;
+			border-bottom: 10px solid orange;
+		}
+		.content_container div{
+			margin:10px;
+		}
+        .star{
+		   position: relative;
+		}
+		
+        .level span{
+        	line-height: 1.1
+        }
+        .top{
+        	width: 90%;
+        	margin:auto;
+        	padding-top: 20px;
+        	font-size: 30px;
+        	font-weight: bold;
+        	font-family: "Source Sans Pro";
+        	color: rgba(0,0,0,0.9);
+        }
+        .nickname{
+        	font-size: 23px;
+        	color: rgba(0,0,0,0.8);
+        	padding-left: 10px;
+        	font-weight: bold;
+        }
+        .score{
+        	font-size: 20px;
+        	padding-left: 10px;
+        	color: rgba(0,0,0,0.9);
+
+        }

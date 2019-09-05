@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset=utf-8>
+	<meta name=description content="">
+	<meta name=viewport content="width=device-width, initial-scale=1">
+	<title>Learn typing --Levels</title>
+  <link rel="stylesheet" href="common.css">
+	<link rel="stylesheet" href="css/circle.css">
+  <link rel="stylesheet" type="" href="css/account.css">
+	
+</head>
+<body>
+	<header>
+		<div class="header_container">
+			<div class="header_content">
+				<div class="top_navigation">
+				 <div class="web_title">
+					<img src="img/logoblack.png">
+					<span>Typing</span>
+				 </div>
+				 <div class="menu">
+					<a href="">Service</a>
+					<a href="">Pricing</a>
+					<a href="">About us</a>
+					<span  style="color:purple; cursor: pointer;" class="user">
+						<%=user[0].fullname%>
+					</span>
+				 </div>
+			    </div>
+			</div>
+		</div>
+		<div class="hamburger">
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<div class="hambmenu">
+			<div>	
+                   <a href="">Service</a>
+					<a href="">Pricing</a>
+					<a href="">About us</a>
+					<span style="color:purple;" class="user">
+						<%=user[0].fullname%>
+					</span>
+			</div>
+				    
+		</div>
+	</header>
+
+     <% 
+               let levelscompleted=0
+               let avgaccuracy=0
+               let avgwpm=0
+               let totalstars=0
+               let totalscore=0
+              for(let level in user[0].scores){
+                totalstars+=user[0].scores[level].stars
+                levelscompleted+=1
+                avgaccuracy+=user[0].scores[level].accuracy
+                avgwpm+=user[0].scores[level].wpm
+                totalscore+=user[0].scores[level].score
+              }
+                   avgwpm=avgwpm/levelscompleted
+                   avgaccuracy=avgaccuracy/levelscompleted
+                   if(levelscompleted==0){
+                     avgwpm=0;
+                     avgaccuracy=0
+                   }
+               %>
+
+    <section class="content">
+    	<section class="content_container">
+    		<section class="leveldetail">
+    			<img src="img/typinglevel.png" alt="">
+    			<span>Typing Challenge</span>
+    			<a href="/starttyping"><button>Start Typing</button></a>
+    		</section>
+    		<section class="statistics">
+    			<span>Typing challenge</span>
+          <div class="totaldetails">
+            <span>Total stars: <span class="right"><%=totalstars%></span>  </span>
+            <span>Total score: <span class="right"><%=totalscore%></span>  </span>
+          </div>
+
+    			<div class="details">
+    				<div class="d">
+           
+    				     <div class="c100 p<%=user[0].levelscompleted%>">
+                               <span ><%=levelscompleted%></span>
+                               <div class="slice">
+                                  <div class="bar"></div>
+                                  <div class="fill"></div>
+                               </div>
+                         </div> 
+    					<span class="right">Levels Completed</span>
+    					
+    				</div>
+    				<div class="d">
+    					
+    					<div class="c100 p<%=avgwpm%> green ">
+                               <span><%=Math.floor(avgwpm)%>wpm</span>
+                               <div class="slice">
+                                  <div class="bar"></div>
+                                  <div class="fill"></div>
+                               </div>
+                         </div> 
+    					<span class="right">Speed</span>
+    				</div>
+    				<div class="d">
+    					
+    					<div class="c100 p<%=avgaccuracy%> orange">
+                               <span><%=Math.floor(avgaccuracy)%> %</span>
+                               <div class="slice">
+                                  <div class="bar"></div>
+                                  <div class="fill"></div>
+                               </div>
+                         </div>
+    					<span class="right">Accuracy</span>
+    				</div>	
+    			</div>
+    			
+    		   
+    		</section>
+    	</section>
+    </section>
+
+   <section class="accountpopup">
+   	  <div class="popup_container">
+   	  	<div class="popup_content">
+   	  		<div>
+   	  			<span>Change password</span>
+   	  			<span>Change email</span>
+   	  			<span>Delete account</span>
+   	  		</div>
+   	  		<div>
+   	  			<span id="logout">Logout</span>
+   	  		</div>
+   	  		<img src="img/cancelwhite.png" alt="" class="cancelimg">
+   	  	</div>
+   	  </div>
+   </section>
+
+	<script src="common.js"></script>
+	<script src="js/cookiereader.js"></script>
+	<script type="text/javascript">
+		//popup
+
+		let users=document.querySelectorAll('.user')
+		users.forEach((v,i)=>{
+			v.addEventListener('click', function(e) {
+				document.querySelector('.accountpopup').style.display="block"
+			});
+		})
+		let cancelimg=document.querySelector('.cancelimg').addEventListener('click', function(e) {
+			    document.querySelector('.accountpopup').style.display="none"
+		});
+
+		//logout
+          document.querySelector('#logout').addEventListener('click',
+           function(e) {
+          	Cookies.remove("token")
+          	window.location.replace("/")
+          });
+	</script>
+</body>
+</html>

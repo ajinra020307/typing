@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset=utf-8>
+	<meta name=description content="">
+	<meta name=viewport content="width=device-width, initial-scale=1">
+	<title>Learn typing --Levels</title>
+    <link rel="stylesheet" href="../common.css">
+    <script src="../js/cookiereader.js"></script>
+   
+</head>
+<body>
+	  <audio>
+      <source src="../click.mp3" type="audio/mp3">
+     </audio>
+	<header>
+		<div class="header_container">
+			<div class="header_content">
+				<div class="top_navigation">
+				 <div class="web_title">
+					<img src="../img/logoblack.png">
+					<span>Typing</span>
+				 </div>
+				 <div class="menu">
+					<a href="">Service</a>
+					<a href="">Pricing</a>
+					<a href="">About us</a>
+					<%if(user){%>
+                      <span style="color:tomato;" class="user">
+						<%=user[0].fullname%>
+					  </span>
+			    	<%}else{%>
+
+			    	   <a href="">Signup</a>
+			    	   <a href="">Login</a>
+			    	<%}%>
+				 </div>
+			    </div>
+			</div>
+		</div>
+		<div class="hamburger">
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<div class="hambmenu">
+			<div>	
+                   <a href="">Service</a>
+					<a href="">Pricing</a>
+					<a href="">About us</a>
+					<%if(user){%>
+                      <span style="color:tomato;" class="user">
+						<%=user[0].fullname%>
+					  </span>
+			    	<%}else{%>
+
+			    	   <a href="">Signup</a>
+			    	   <a href="">Login</a>
+			    	<%}%>
+					
+			</div>
+				    
+		</div>
+	</header>
+
+
+	 <section class="accountpopup">
+   	  <div class="popup_container">
+   	  	<div class="popup_content">
+   	  		<div>
+   	  			<span>Change password</span>
+   	  			<span>Change email</span>
+   	  			<span>Delete account</span>
+   	  		</div>
+   	  		<div>
+   	  			<span id="logout">Logout</span>
+   	  		</div>
+   	  		<img src="../img/cancelwhite.png" alt="" class="cancelimg">
+   	  	</div>
+   	  </div>
+   </section>
+
+<script>
+	//popup
+
+    let users=document.querySelectorAll('.user')
+    users.forEach((v,i)=>{
+      v.addEventListener('click', function(e) {
+        document.querySelector('.accountpopup').style.display="block"
+      });
+    })
+    let cancelimg=document.querySelector('.cancelimg').addEventListener('click', function(e) {
+          document.querySelector('.accountpopup').style.display="none"
+    });
+
+    //logout
+          document.querySelector('#logout').addEventListener('click',
+           function(e) {
+            Cookies.remove("token")
+            window.location.replace("/")
+          });
+
+</script>
+</body>
+</html>

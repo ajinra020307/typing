@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset=utf-8>
+  <meta name=description content="">
+  <meta name=viewport content="width=device-width, initial-scale=1">
+  <title>Document</title>
+  <script src="../js/cookiereader.js"></script>
+  <link rel="stylesheet" type="text/css" href="../common.css">
+  <link rel="stylesheet" type="text/css" href="../css/circle.css">
+  <link rel="stylesheet" type="text/css" href="../css/normal.css">
+</head>
+<body>
+  
+  <%
+     let ifthereisuser=false;
+     let userfinishedlevel=false
+     if(user){
+        ifthereisuser=true;
+         if(user[0].scores[levelcontent.levelname]){
+       userfinishedlevel=true
+    }
+    }
+   
+
+  %>
+
+   <header>
+       <div class="header_container">
+            <div class="header_content">
+             <div class="top_navigation">
+                     <div class="web_title">
+                     <img src="../img/logoblack.png">
+                     <span>Typing</span>
+                     </div>
+               <div class="menu">
+                     <img src="../img/refresh.png" alt="" id="retryimg">
+                     <img src="../img/pause.png" alt="" class="pause">
+                     <a href=""><img src="../pause" alt=""></a>
+
+                     <%if(ifthereisuser){%>
+                         <span style="color:tomato;" class="user">
+                            <%=user[0].fullname%>
+                         </span>
+                     <%}else{%>
+                         <a href="">Signup</a>
+                         <a href="">Login</a>
+                     <%}%>
+               </div>
+            </div>
+         </div>
+       </div>
+            <div class="hamburger">
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+    <div class="hambmenu">
+      <div> 
+     
+           <a href=""><img src="../img/refresh.png" alt="" ></a>
+           <a href=""><img src="../img/pause.png" alt="" class="pause"></a>
+           <a href=""><img src="../pause" alt=""></a>
+
+            <%if(ifthereisuser){%>
+              <span style="color:tomato;" class="user">
+                    <%=user[0].fullname%>
+              </span>
+            <%}else{%>
+              <a href="">Signup</a>
+              <a href="">Login</a>
+            <%}%>
+          
+      </div>           
+    </div>
+
+  </header>
+
+  <div class="typing">
+    <div class="typingcontainer">
+      <div class="level_title">
+          <%=levelcontent.levelname%>
+        </div>
+        <div class="type_content" >
+            <p class="typing_contentdiv"><%=levelcontent.content%></p>
+            <p class="typing_content"></p>
+        </div>
+    </div>  
+    <div class="add">
+       
+    </div>
+
+   <%
+     if(ifthereisuser && userfinishedlevel){%>
+       <div class="previous">
+          <div class="previous_container">
+
+          <div class="previous_title">
+               <span>Best <br> score</span>
+          </div>
+
+          <div class="wpm">
+            
+             <div class="c100 p<%=user[0].scores[levelcontent.levelname].wpm%> ">
+                 <span><%=user[0].scores[levelcontent.levelname].wpm%></span>
+                    <div class="slice">
+                       <div class="bar"></div>
+                       <div class="fill"></div>
+                    </div>
+            </div>
+            <span>wpm</span>
+          </div>
+
+          <div class="stars">
+             <img src="../img/<%=user[0].scores[levelcontent.levelname].stars%>star.png" alt="">
+          </div>
+
+          <div class="accuracy">
+            
+            <div class="c100 p<%=user[0].scores[levelcontent.levelname].accuracy%> ">
+                 <span><%=user[0].scores[levelcontent.levelname].accuracy%></span>
+                    <div class="slice">
+                       <div class="bar"></div>
+                       <div class="fill"></div>
+                    </div>
+            </div>
+            <span>accuracy</span>
+          </div>
+
+          
+       </div>
+     </div>
+  <%}%>
+
+   <%if(!userfinishedlevel){%>
+      <style>
+        .current{
+          flex-direction: row;
+          margin: 40px;
+          font-size: 30px;
+        }
+      </style>
+   <%}%>
+    
+
+
+    <div class="current">
+       <div class="timer">
+           <span class="big">Time : </span>
+           <span id="minutes">0</span>:
+           <span id="seconds">0</span>
+           <span class="small"></span>
+       </div>
+       <div class="wpm">
+           <span id="wpm"></span>
+           <span class="small"> wpm</span>
+       </div>
+       <div class="accuracy">
+         <span id="accuracy"></span>
+         <span class="small"> % accuracy</span>
+
+       </div>
+       <div class="timelimit">
+         <span>Time to finish: </span>
+         <span id="timelimit"><%=levelcontent.timelimit%></span>
+         <br>
+         <span class="small">sec</span>
+       </div>
+    </div>
+  </div>
+
+  <div class="btn" style="display: none;">
+       
+        <a href="/starttyping">
+        <button>Back</button></a>
+
+        <a href="/level/level-<%=parseInt(levelcontent.levelid)+2%>">
+        <button>Next</button></a>
+    </div>
+
+   <section class="accountpopup">
+      <div class="popup_container">
+        <div class="popup_content">
+            <div>
+                <span>Change password</span>
+                <span>Change email</span>
+                <span>Delete account</span>
+            </div>
+            <div>
+                <span id="logout">Logout</span>
+            </div>
+              <a href="">
+                <img src="../img/cancelwhite.png" alt="" class="cancelimg">
+              </a>  
+          </div>
+      </div>
+   </section>
+
+  <section class="tryagain_popup" style="display: none;">
+     <div class="tryagain_container">
+         <div class="tryagain_content">
+               You Have reached the time limit Please Try again..
+               <button id="retry">
+                  Retry
+               </button>
+          </div>
+     </div>
+   </section>
+
+  <section class="scorespopup" style="z-index: 300">
+      <div class="scorespopup_container">
+         <div class="scorespopup_content">
+              <a href="/level/level-<%=parseInt(levelcontent.levelid)+2%>">
+                <img src="../img/cancelwhite.png" alt="" id="c">
+              </a>
+             <div class="sstars">
+                 <img src="" alt="">
+             </div>
+             <div class="other">
+                  <div class="swpm"></div>
+                  <div class="saccuracy"></div>
+                  <div class="stime"></div>
+              </div>     
+         </div>
+      </div>
+   </section>
+
+ 
+   </section>
+
+
+    <div class="secret" style="display: none;">
+          <p class="slevelname"><%=levelcontent.levelname%></p>
+          <p class="slevelid"><%=levelcontent.levelid%></p>
+          <p class="snickname"><%=levelcontent.nickname%></p>
+          <p class="sdifficulty"><%=levelcontent.difficulty%></p>
+          <p class="stimelimit"><%=levelcontent.timelimit%></p>
+          <p class="sthreestaraccuracy"><%=levelcontent.stars.three.accuracy%></p>
+          <p class="stwostaraccuracy"><%=levelcontent.stars.two.accuracy%></p>
+          <p class="sonestaraccuracy"><%=levelcontent.stars.one.accuracy%></p>
+          <p class="sthreestarwpm"><%=levelcontent.stars.three.wpm%></p>
+          <p class="stwostarwpm"><%=levelcontent.stars.two.wpm%></p>
+          <p class="sonestarwpm"><%=levelcontent.stars.one.wpm%></p>
+          <p class="timelimit"><%=levelcontent.timelimit%></p>
+   </div>
+
+  <script src="../common.js"></script>  
+  <script src="../js/normal.js"></script>
+</body>
+</html>

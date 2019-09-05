@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset=utf-8>
+	<meta name=description content="">
+	<meta name=viewport content="width=device-width, initial-scale=1">
+	<title>Learn typing --Levels</title>
+	<link rel="stylesheet" href="../css/circle.css">
+
+	<style>
+				body{
+			margin:0;
+			padding: 0;
+		    line-height: 1.6;
+		    overflow-x: hidden;
+		    min-height: 100vh;
+		    background-color: #f2f2f2;
+		}
+		h1,h2,h3,p,li,ul{
+			margin: 0;
+			padding: 0;
+		}
+		/*header*/
+
+		header{
+		    position:relative; 	
+			padding-top: 10px;	
+			padding-bottom: 10px;		
+		}
+
+		.header_container{
+			width: 90%;
+			margin:auto;
+		    position: relative;
+		}
+		.web_title{
+			display: flex;
+			font-size: 24px;
+			align-items: flex-end;
+		}
+		.web_title span{
+			padding-left: 10px;
+		}
+		.menu{
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-end;
+			font-size: 18px;
+			
+		}
+		.menu a{
+			text-decoration: none;
+			
+		}
+
+		.menu a:hover{
+			border-bottom: 2px solid white;
+		}
+		.top_navigation{
+			display: grid;
+			grid-template-columns: 50% 50%;
+		}
+
+
+		.hamburger div{
+			background-color: orange;
+			width: 40px;
+			height: 5px;
+			margin-top: 5px;
+
+		}
+		.hamburger{
+				position: absolute;
+			    top: 20px;
+			    right: 5%;
+			    display: none;
+			     z-index: 300;
+		}
+		.hambmenu{
+			position: absolute;
+			width: 100%;
+			min-height: 100vh;
+			top: 0;
+			background: rgba(0,0,0,0.8);
+			display: none;
+			z-index: 200;
+		}
+		.hambmenu div{
+			min-width: 100vw;
+			min-height: 100vh;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-around;
+			align-items: center;
+			font-size: 25px;
+
+		}
+		.hambmenu div a{
+			color: grey;
+			text-decoration: none;
+			border-bottom:1px solid grey;
+		}
+
+		.hambmenu div a:hover{
+			text-decoration: underline;
+			color: white;
+		}
+
+		@media (max-width: 1000px){
+			.menu{
+				display: none;
+			}
+			.hamburger{
+				display: block;
+			}
+		}
+		.content_container{
+			width: 90%;
+			margin: auto;
+			margin-top: 30px;
+			display: grid;
+			grid-template-columns: 35% 60%;
+			grid-column-gap: 5%;
+			align-items: center;
+		}
+		.leveldetail{
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			background-color:white;
+			padding: 40px 20px;
+		}
+		.leveldetail span{
+			font-size: 30px;
+			
+		}
+		.leveldetail img{
+			width: 100%;
+
+		}
+
+		.leveldetail button{
+			font-size: 20px;
+			border: 1px solid grey;
+			background-color: green;
+			color: white;
+			width: 300px;
+			height: 50px;
+		}
+		.statistics{
+			background-color: white;
+			display: flex;
+			flex-direction: column;
+			text-align: center;
+			padding:70px 0; 
+		}
+		.statistics span{
+			font-size: 25px;
+
+		}
+		.statistics p{
+			font-size: 20px;
+		}
+
+		table{
+
+			width: 80%;
+			margin: auto;
+			font-size: 20px;
+		}
+		.d{
+			width: 33%;
+			text-align: center;
+			align-items: center;
+			display: flex;
+			flex-direction: column;
+		}
+		.details{
+			display: flex;
+			justify-content: space-evenly;
+			padding:30px 30px;
+		}
+		.details span{
+			font-size: 20px;
+		}
+		.popup_container{
+			
+		}
+		.popup_content{
+			width: 70%;
+			margin: auto;
+			font-size: 20px;
+			background: linear-gradient(to bottom right,#116149,#13aa52);
+			color: white;
+			padding: 40px 40px;
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+			position: relative;
+		}
+		.popup_content div{
+			display: flex;
+			flex-direction: column;
+			
+		}
+		.accountpopup span{
+			cursor: pointer;
+			margin: 20px;
+		}
+		.popup_content img{
+			position: absolute;
+			top: 10px;
+			right: 10px;
+		}
+		.accountpopup{
+			position: absolute;
+			top: 20%;
+			bottom: 0;
+			width: 100%;
+			z-index: 200;
+			display: none;
+		}
+        @media (max-width: 1000px){
+        .content_container{	
+			grid-template-columns:1fr;
+			
+		}
+		.leveldetail img{
+			width:60%;
+
+		}
+        }
+        @media (max-width: 700px){
+        	.leveldetail img{
+        		width: 80%;
+
+        	}
+        	.leveldetail{
+        		padding: 40px 0;
+        	}
+        	.details{
+        		flex-direction: column;
+        		align-items: center;
+        	}
+        	.d{
+        		margin: 20px;
+        	}
+        }
+	</style>
+</head>
+<body>
+	<header>
+		<div class="header_container">
+			<div class="header_content">
+				<div class="top_navigation">
+				 <div class="web_title">
+					<img src="../img/logoblack.png">
+					<span>Typing</span>
+				 </div>
+				 <div class="menu">
+					<a href="">Service</a>
+					<a href="">Pricing</a>
+					<a href="">About us</a>
+					<span  style="color:tomato; cursor: pointer;" class="user">
+						<%=user[0].fullname%>
+					</span>
+				 </div>
+			    </div>
+			</div>
+		</div>
+		<div class="hamburger">
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<div class="hambmenu">
+			<div>	
+                   <a href="">Service</a>
+					<a href="">Pricing</a>
+					<a href="">About us</a>
+					<span style="color:tomato;" class="user">
+						<%=user[0].fullname%>
+					</span>
+			</div>
+				    
+		</div>
+	</header>
+
+    <section class="content">
+    	<section class="content_container">
+    		<section class="leveldetail">
+    			<img src="../img/typinglevel.png" alt="">
+    			<span>Typing Challenge</span>
+    			<a href="/starttyping"><button>Start Typing</button></a>
+    		</section>
+    		<section class="statistics">
+    			<span>Typing challenge</span>
+    			<div class="details">
+    				<div class="d">
+    					
+    				     <div class="c100 p<%=user[0].levelscompleted%> ">
+                               <span><%=user[0].levelscompleted%></span>
+                               <div class="slice">
+                                  <div class="bar"></div>
+                                  <div class="fill"></div>
+                               </div>
+                         </div> 
+    					<span>Levels Completed</span>
+    					
+    				</div>
+    				<div class="d">
+    					
+    					<div class="c100 p<%=user[0].avgwpm%> green">
+                               <span><%=user[0].avgwpm%>wpm</span>
+                               <div class="slice">
+                                  <div class="bar"></div>
+                                  <div class="fill"></div>
+                               </div>
+                         </div> 
+    					<span>Speed</span>
+    				</div>
+    				<div class="d">
+    					
+    					<div class="c100 p<%=user[0].avgaccuracy%> orange">
+                               <span><%=user[0].avgaccuracy%> %</span>
+                               <div class="slice">
+                                  <div class="bar"></div>
+                                  <div class="fill"></div>
+                               </div>
+                         </div>
+    					<span>Accuracy</span>
+    				</div>	
+    			</div>
+    			
+    		   
+    		</section>
+    	</section>
+    </section>
+
+   <section class="accountpopup">
+   	  <div class="popup_container">
+   	  	<div class="popup_content">
+   	  		<div>
+   	  			<span>Change password</span>
+   	  			<span>Change email</span>
+   	  			<span>Delete account</span>
+   	  		</div>
+   	  		<div>
+   	  			<span id="logout">Logout</span>
+   	  		</div>
+   	  		<img src="../img/cancelwhite.png" alt="" class="cancelimg">
+   	  	</div>
+   	  </div>
+   </section>
+
+	<script src="../common.js"></script>
+	<script src="../js/cookiereader.js"></script>
+	<script type="text/javascript">
+		//popup
+
+		let users=document.querySelectorAll('.user')
+		users.forEach((v,i)=>{
+			v.addEventListener('click', function(e) {
+				document.querySelector('.accountpopup').style.display="block"
+			});
+		})
+		let cancelimg=document.querySelector('.cancelimg').addEventListener('click', function(e) {
+			    document.querySelector('.accountpopup').style.display="none"
+		});
+
+		//logout
+          document.querySelector('#logout').addEventListener('click',
+           function(e) {
+          	Cookies.remove("token")
+          	window.location.replace("/")
+          });
+	</script>
+</body>
+</html>

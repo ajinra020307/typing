@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset=utf-8>
+	<meta name=description content="">
+	<meta name=viewport content="width=device-width, initial-scale=1">
+	<title>Document</title>
+	<link rel="stylesheet" href="../common.css">
+	<link rel="stylesheet" href="../css/login&signup.css">
+	<script src="../common.js" async></script>
+ </head>
+<body>
+	<header>
+		<div class="header_container">
+			<div class="header_content">
+				<div class="top_navigation">
+				 <div class="web_title">
+					<img src="../img/logoblack.png">
+					<span>Typing</span>
+				 </div>
+				 <div class="menu">
+					<a href="">Service</a>
+					<a href="">Pricing</a>
+					<a href="/signup">Sign up</a>
+					<a href="/login">Login</a>
+					<a href="">About us</a>
+				 </div>
+			    </div>
+			</div>
+		</div>
+		<div class="hamburger">
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<div class="hambmenu">
+			<div>	
+                   <a href="">Service</a>
+					<a href="">Pricing</a>
+					<a href="/signup">Sign up</a>
+					<a href="/login">Login</a>
+					<a href="">About us</a>
+			</div>
+				    
+		</div>
+	</header>
+
+	<section class="content">
+		<div class="content_container">
+			<section class="loginsignup_content">
+					<section class="signup">
+				   <div class="top">
+					   <img src="../img/userfaceblack.png" alt="">
+					   <span>Sign up</span>
+				   </div>
+				   <div class="form">
+					  <form action="/signup" method="POST">
+					  	 <input type="text" name="fullname" placeholder="Full name" required="true">
+					  	 <input type="email" name="email" placeholder="Email Id" required="true">
+					  	 <input type="date" name="birthday" required="true">
+					  	 <select name="language" required="true">
+					  	 	<option value="">--Language--</option>
+					  	 	<option value="English">English</option>
+					  	 	<option value="Tamil">Tamil</option>
+					  	 </select>
+					  	 <select name="gender" required="true">
+					  	 	<option value="">--gender--</option>
+					  	 	<option value="Male">Male</option>
+					  	 	<option value="Female">Female</option>
+					  	 	<option value="Others">Others</option>
+					  	 </select>
+					  	 <select id="country" name="country" required="true">
+					  	 	<option value="">--country--</option>
+					  	 </select>
+					  	 <input type="password" id="pswd" name="password" placeholder="Enter password"required="true" class="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number,one uppercase and one lowercase letter and at least 8 characters">
+
+					  	 <input type="password" id="npswd" name="npassword" placeholder="Confirm password" required="true" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+					  	 <button type="submit" >Sign up</button>
+					  </form>
+				   </div>
+			    </section>
+			
+			</section>	
+
+		</div>
+	</section>
+
+	<section class="popup">
+		<div class="popup_container">
+			<div class="cancelimg">
+				<img src="../img/cancel.png" alt="">
+			</div>
+			<div class="popup_content">
+			  <h2>Password must contain the following:</h2>
+			  <p id="letter" class="invalid">1.A <b>lowercase</b> letter</p>
+			  <p id="capital" class="invalid">2.A <b>capital (uppercase)</b> letter</p>
+			  <p id="number" class="invalid">3.A <b>number</b></p>
+			  <p id="length" class="invalid">4.Minimum <b>8 characters</b></p>
+			</div>
+		</div>
+	</section>
+
+
+	<script src="../js/login&signup.js"></script>
+</body>
+</html>

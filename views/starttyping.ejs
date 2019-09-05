@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset=utf-8>
+	<meta name=description content="">
+	<meta name=viewport content="width=device-width, initial-scale=1">
+	<title>Learn typing --Levels</title>
+  <link rel="stylesheet" href="common.css">	
+  <link rel="stylesheet" type="" href="css/starttyping.css">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+  
+	
+</head>
+<body>
+	<header>
+		<div class="header_container">
+			<div class="header_content">
+				<div class="top_navigation">
+				 <div class="web_title">
+					<img src="img/logoblack.png">
+					<span>Typing</span>
+				 </div>
+				 <div class="menu">
+					<a href="">Service</a>
+					<a href="">Pricing</a>
+					<a href="">About us</a>
+					<%if(user){%>
+                      <span style="color:tomato;" class="user">
+						<%=user[0].fullname%>
+					  </span>
+			    	<%}else{%>
+
+			    	   <a href="/signup">Signup</a>
+			    	   <a href="/login">Login</a>
+			    	<%}%>
+				 </div>
+			    </div>
+			</div>
+		</div>
+		<div class="hamburger">
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<div class="hambmenu">
+			<div>	
+                   <a href="">Service</a>
+					<a href="">Pricing</a>
+					<a href="">About us</a>
+					<%if(user){%>
+                      <span style="color:tomato;" class="user">
+						<%=user[0].fullname%>
+					  </span>
+			    	<%}else{%>
+
+			    	   <a href="/signup">Signup</a>
+			    	   <a href="/login">Login</a>
+			    	<%}%>
+			</div>
+				    
+		</div>
+	</header>
+  <%
+    let totalscore=0
+    let totalstars=0
+    if(user){
+      for(let score in user[0].scores){
+        totalscore+=user[0].scores[score].score
+        totalstars+=user[0].scores[score].stars
+      }
+    }
+
+  %>
+  <section class="top">
+    <span>Total score: <span><%=totalscore%></span></span>
+    <span>Total stars: <span><%=totalstars%></span></span>
+  </section>
+ 
+
+    <section class="content">
+    	<section class="content_container">
+    		<%levelcontent.forEach((v,i)=>{
+    			let currentlevel
+                let stars;
+    			if(user){
+    				currentlevel=user[0].scores[v.levelname]
+    			}else{
+    				currentlevel=v.levelname
+    			}
+    			
+    			let passed=false
+    			try{
+    				if(currentlevel.passed==true && user){
+                	  passed=true
+                	  if(currentlevel.stars==3){
+                	  	stars="threestar"
+                	  }else if(currentlevel.stars==2){
+                	  	stars="twostar"
+                	  }else if(currentlevel.stars==1){
+                         stars="onestar"
+                	  }
+	                }else{
+	                	passed=false
+	                }
+    			}catch(e){} %>
+          
+                
+        <div class="<%=v.levelname%> level" >
+            <a href="/level/<%=v.levelname%>">
+             
+              
+                <% if(passed==true){%>     
+                <div class="star" class="on">	
+                   <img src="img/typinglevel.png">
+                </div>
+               
+                <%}else{%>
+                <div>
+                  <img src="img/typinglevel.png" alt="" class="threestar">
+                </div>
+                
+                 <%} %>
+            </a>
+            <span class="nickname">
+               <span><%=parseInt(v.levelid)+1%>.</span>
+               <span ><%=v.nickname%></span>
+               <%if(passed==true){%>
+                  <img
+                   src="img/<%=currentlevel.stars%>star.png"
+                  alt="" style="width: 60px;">
+               <%}%>
+               
+            </span>
+          
+
+            <%if(user){
+                try{
+                  	if(passed==true){%>
+                     
+                        <span class="score">Score:
+                         	<%=currentlevel.score%> points
+
+                         	</span>
+                          
+                  	   <%}
+                        
+                  	}catch(e){}}%>
+
+                  </div>
+    	   <% })%>
+       
+    	</section>
+        <section class="add">
+        
+        </section>
+      
+    </section>
+
+	 <section class="accountpopup">
+   	  <div class="popup_container">
+   	  	<div class="popup_content">
+   	  		<div>
+   	  			<span>Change password</span>
+   	  			<span>Change email</span>
+   	  			<span>Delete account</span>
+   	  		</div>
+   	  		<div>
+   	  			<span id="logout">Logout</span>
+   	  		</div>
+   	  		<img src="img/cancelwhite.png" alt="" class="cancelimg">
+   	  	</div>
+   	  </div>
+   </section>
+	<script src="common.js"></script>
+	<script src="js/cookiereader.js"></script>
+	<script type="text/javascript">
+		//popup
+
+		let users=document.querySelectorAll('.user')
+		users.forEach((v,i)=>{
+			v.addEventListener('click', function(e) {
+				document.querySelector('.accountpopup').style.display="block"
+			});
+		})
+		let cancelimg=document.querySelector('.cancelimg').addEventListener('click', function(e) {
+			    document.querySelector('.accountpopup').style.display="none"
+		});
+
+		//logout
+          document.querySelector('#logout').addEventListener('click',
+           function(e) {
+          	Cookies.remove("token")
+          	window.location.replace("/")
+          });
+	</script>
+
+
